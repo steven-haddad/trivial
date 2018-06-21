@@ -13,6 +13,7 @@
       <ion-col width-100>
         <ion-list>
           <form (ngSubmit)="saveForm()">
+
             <!-- Choix de la catégorie -->
             <ion-item>
               <ion-label>Categorie</ion-label>
@@ -29,6 +30,7 @@
                 <ion-option value=20 >Mythology</ion-option>
               </ion-select>
             </ion-item>
+
             <!-- Choix de la difficulté -->
             <ion-item>
               <ion-label>Difficulté</ion-label>
@@ -38,6 +40,13 @@
                 <ion-option value="hard">Hard</ion-option>
               </ion-select>
             </ion-item>
+
+                Number of questions
+              </ion-label>
+              <ion-input [(ngModel)]="quizNum" name="quizNum" type="number"></ion-input>
+            </ion-item>
+            <button ion-button type="submit" block>Save</button>
+
             
             <!-- Choix du type -->
             <ion-item>
@@ -67,6 +76,7 @@
               <ion-input [(ngModel)]="quizNum" name="quizNum" type="number"></ion-input>
             </ion-item>
             <button ion-button type="submit" block>Sauvegarder</button>
+
           </form>
         </ion-list>  
       </ion-col>

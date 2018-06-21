@@ -14,6 +14,7 @@ export class SettingsPage {
   quizNum:number;
   type: string;
   encodage: string;
+
   
   constructor(
     public navCtrl: NavController, 
@@ -28,12 +29,15 @@ export class SettingsPage {
         this.quizNum = option.quizNum;
         this.type=option.type;
         this.encodage=option.encodage;
+
       } else {
         this.category = 17;
         this.difficulty = 'medium';
         this.quizNum = 10;
+
         this.type='';
         this.encodage='';
+
 
       }
     })
@@ -43,9 +47,11 @@ export class SettingsPage {
     let option = {
       category: this.category,
       difficulty: this.difficulty,
+
       quizNum: this.quizNum,
       type: this.type,
       encodage: this.encodage
+
     } 
     this.storage.set('option', JSON.stringify(option));
     this.navCtrl.push(HomePage);
