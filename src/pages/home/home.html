@@ -1,17 +1,17 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Trivia</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content padding >
+  <ion-grid class="home">
+    <ion-row align-items-center>
+      <ion-col align-self-center>
+        <ion-img width="150" height="150" src="https://firebasestorage.googleapis.com/v0/b/datatest-cb8b3.appspot.com/o/ionic-trivia-img%2Fluna-luna.png?alt=media&token=0420d480-5598-4325-a35d-9194c72b9ca3"></ion-img>
+        <h2 class="question">Welcome to Trivia</h2>
+          <button ion-button (click)="start()">Start</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
