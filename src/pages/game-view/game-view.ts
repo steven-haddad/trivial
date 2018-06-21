@@ -57,6 +57,7 @@ export class GameViewPage {
     });
   }
 
+
   trackAnswers(answer){
     this.storage.get('results').then((val) => {
       let results = val,

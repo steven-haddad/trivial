@@ -13,9 +13,10 @@
       <ion-col width-100>
         <ion-list>
           <form (ngSubmit)="saveForm()">
-            <!-- category -->
+
+            <!-- Choix de la catégorie -->
             <ion-item>
-              <ion-label>Category</ion-label>
+              <ion-label>Categorie</ion-label>
               <ion-select [(ngModel)]="category" name="catergory" value="number">
                 <ion-option value=12 >Music</ion-option>
                 <ion-option value=14 >Television</ion-option>
@@ -29,23 +30,53 @@
                 <ion-option value=20 >Mythology</ion-option>
               </ion-select>
             </ion-item>
-            <!-- difficulty -->
+
+            <!-- Choix de la difficulté -->
             <ion-item>
-              <ion-label>Difficulty</ion-label>
+              <ion-label>Difficulté</ion-label>
               <ion-select [(ngModel)]="difficulty" name="difficulty" value="string">
                 <ion-option value="easy">Easy</ion-option>
                 <ion-option value="medium">Medium</ion-option>
                 <ion-option value="hard">Hard</ion-option>
               </ion-select>
             </ion-item>
-            <!-- number of quizzes -->
-            <ion-item>
-              <ion-label>
+
                 Number of questions
               </ion-label>
               <ion-input [(ngModel)]="quizNum" name="quizNum" type="number"></ion-input>
             </ion-item>
             <button ion-button type="submit" block>Save</button>
+
+            
+            <!-- Choix du type -->
+            <ion-item>
+              <ion-label>Type</ion-label>
+              <ion-select [(ngModel)]="type" name="type" value="string">
+                <ion-option value="multiple">Multipe Choice</ion-option>
+                <ion-option value="boolean">True/False</ion-option>
+                <ion-option value="">Any</ion-option>
+              </ion-select>
+            </ion-item>
+
+              <!-- Choix de l'encodage -->
+              <ion-item>
+                <ion-label>Encodage</ion-label>
+                <ion-select [(ngModel)]="encodage" name="encodage" value="string">
+                  <ion-option value="">Default Encoding</ion-option>
+                  <ion-option value="url3986">URL Encoding (RFC 3986)</ion-option>
+                  <ion-option value="base64">Base64 Encoding</ion-option>
+                </ion-select>
+              </ion-item>
+
+            <!-- nombre de question -->
+            <ion-item>
+              <ion-label>
+               Nombre de questions
+              </ion-label>
+              <ion-input [(ngModel)]="quizNum" name="quizNum" type="number"></ion-input>
+            </ion-item>
+            <button ion-button type="submit" block>Sauvegarder</button>
+
           </form>
         </ion-list>  
       </ion-col>

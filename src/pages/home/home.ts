@@ -3,7 +3,9 @@ import { NavController } from 'ionic-angular';
 import { QuizProvider } from '../../providers/quiz/quiz';
 import { Storage } from '@ionic/storage';
 import { GameViewPage } from '../game-view/game-view';
+
 import { SettingsPage } from '../settings/settings';
+
 
 @Component({
   selector: 'page-home',
@@ -14,6 +16,10 @@ export class HomePage {
     category:number,
     difficulty:string,
     quizNum: number
+
+    type: string
+    encodage: string
+
   };
 
   constructor(
@@ -30,11 +36,15 @@ export class HomePage {
          this.option = {
           category: 15,
           difficulty: 'medium',
+          type:  '',
+          encodage: '',
           quizNum: 10
         };
       };
     
-      this.quizProvider.getQuiz(this.option.category, this.option.difficulty, this.option.quizNum).
+    
+      this.quizProvider.getQuiz(this.option.category, this.option.difficulty, this.option.quizNum,this.option.type,this.option.encodage).
+
       subscribe(quiz => {
         this.storage.set('quizzes', JSON.stringify(quiz));
       });
@@ -43,7 +53,9 @@ export class HomePage {
 
 
   start(){
+
     this.navCtrl.setRoot(SettingsPage);
+
     this.storage.set('quizIndex', 0);
     this.storage.set('results', []);
   };
