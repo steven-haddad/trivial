@@ -56,6 +56,7 @@ export class GameViewPage {
       };
     });
   }
+  sss
 
   trackAnswers(answer){
     this.storage.get('results').then((val) => {
