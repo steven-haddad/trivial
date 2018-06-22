@@ -23,7 +23,7 @@ export class HomePage {
   };
 
   pseudo:string
-winload ionview winload
+
 
  constructor(
     public navCtrl: NavController, 
@@ -55,6 +55,15 @@ winload ionview winload
         this.storage.set('quizzes', JSON.stringify(quiz));
       });
     });
+  
+//Repmplissage du champ "pseudo" avec la valeur du pseudo stocké localement
+    
+    this.storage.get('pseudo').then((val) => {
+    if(val!==null){
+      this.pseudo = JSON.parse(val);
+    }
+    }); 
+    
   };
 
 
@@ -74,13 +83,13 @@ winload ionview winload
 
     this.storage.set('quizIndex', 0);
     this.storage.set('results', []);
-    this.storage.set("pseudo",this.pseudo);
+    this.storage.set("pseudo",JSON.stringify(this.pseudo));
    
 
   
   
    
-    console.log(this.storage.get("pseudo"));
+
     
  //CHROME://inspect
    

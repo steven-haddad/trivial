@@ -31,6 +31,9 @@ export class ResultsPage {
 
       this.correctTotal = filterAnswers.length;
     });
+  
+    
+  
   }
 
   backHome() {
@@ -42,5 +45,7 @@ export class ResultsPage {
     this.storage.set('quizIndex', 0);
     this.storage.set('results', []);
   }
+
+  sendDataToLeaderBoard(){}
 
 }
