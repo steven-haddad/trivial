@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Alert } from 'ionic-angular';
 import { QuizProvider } from '../../providers/quiz/quiz';
 import { Storage } from '@ionic/storage';
 import { GameViewPage } from '../game-view/game-view';
 
 import { SettingsPage } from '../settings/settings';
-import { ToastController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 
 @Component({
@@ -13,29 +13,23 @@ import { ToastController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+   
   option: {
     category:number,
     difficulty:string,
     quizNum: number,
-
     type: string,
     encodage: string,
   };
 
-authentification: {
+  pseudo:string
+winload ionview winload
 
-  firstName:string,
-  lastName:string
-
-}
-
-
-  constructor(
+ constructor(
     public navCtrl: NavController, 
     private quizProvider: QuizProvider,
     private storage: Storage,
-    public toastCtrl: ToastController
-  
+    private alertCtrl: AlertController
   ) {
   };
 
@@ -71,9 +65,6 @@ authentification: {
     })
   }
 
-  
-    
-
 
 
   start(){
@@ -83,18 +74,16 @@ authentification: {
 
     this.storage.set('quizIndex', 0);
     this.storage.set('results', []);
+    this.storage.set("pseudo",this.pseudo);
+   
 
-      this.storage.set("firstName",this.authentification.lastName).then((successData)=>{
-        console.log("Data Stored");
-        console.log(successData);
-        const toast = this.toastCtrl.create({
-          message: this.authentification.firstName,
-          duration: 3000
-        });
- 
-      
-      
-      })
+  
+  
+   
+    console.log(this.storage.get("pseudo"));
+    
+ //CHROME://inspect
+   
     }
 
   
