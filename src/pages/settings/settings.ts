@@ -3,6 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { GameViewPage } from '../game-view/game-view';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2d7cd5ee8d1911ddc13778f34752f6c9a9e61c73
 
 @IonicPage()
 @Component({
