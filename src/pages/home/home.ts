@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 import { GameViewPage } from '../game-view/game-view';
 
 import { SettingsPage } from '../settings/settings';
+import { ToastController } from 'ionic-angular';
 
 
 @Component({
@@ -28,10 +29,14 @@ authentification: {
 
 }
 
+
   constructor(
     public navCtrl: NavController, 
     private quizProvider: QuizProvider,
-    private storage: Storage) {
+    private storage: Storage,
+    public toastCtrl: ToastController
+  
+  ) {
   };
 
   ionViewWillEnter(){
@@ -66,14 +71,15 @@ authentification: {
     })
   }
 
-
+  
+    
 
 
 
   start(){
 
 
-    this.navCtrl.setRoot(SettingsPage);
+    this.navCtrl.setRoot(GameViewPage);
 
     this.storage.set('quizIndex', 0);
     this.storage.set('results', []);
@@ -81,8 +87,16 @@ authentification: {
       this.storage.set("firstName",this.authentification.lastName).then((successData)=>{
         console.log("Data Stored");
         console.log(successData);
+        const toast = this.toastCtrl.create({
+          message: this.authentification.firstName,
+          duration: 3000
+        });
+ 
+      
+      
       })
     }
+
   
   
   };
