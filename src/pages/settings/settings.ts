@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
+import { GameViewPage } from '../game-view/game-view';
+
 
 @IonicPage()
 @Component({
@@ -54,7 +56,7 @@ export class SettingsPage {
 
     } 
     this.storage.set('option', JSON.stringify(option));
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push(GameViewPage);
   }
 
 }

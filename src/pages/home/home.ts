@@ -15,12 +15,18 @@ export class HomePage {
   option: {
     category:number,
     difficulty:string,
-    quizNum: number
+    quizNum: number,
 
-    type: string
-    encodage: string
-
+    type: string,
+    encodage: string,
   };
+
+authentification: {
+
+  firstName:string,
+  lastName:string
+
+}
 
   constructor(
     public navCtrl: NavController, 
@@ -38,7 +44,8 @@ export class HomePage {
           difficulty: 'medium',
           type:  '',
           encodage: '',
-          quizNum: 10
+          quizNum: 10,
+         
         };
       };
     
@@ -52,11 +59,40 @@ export class HomePage {
   };
 
 
+
+  getValue(){
+    this.storage.get("object").then((data)=>{
+      console.log(data);
+    })
+  }
+
+
+
+
+
   start(){
+
 
     this.navCtrl.setRoot(SettingsPage);
 
     this.storage.set('quizIndex', 0);
     this.storage.set('results', []);
+
+      this.storage.set("firstName",this.authentification.lastName).then((successData)=>{
+        console.log("Data Stored");
+        console.log(successData);
+      })
+    }
+  
+  
   };
-};
+  
+
+
+
+
+
+
+
+
+
