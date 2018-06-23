@@ -69,9 +69,7 @@ authentification: {
 
 
 
-
   start(){
-
 
     this.navCtrl.setRoot(SettingsPage);
 

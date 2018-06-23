@@ -12,7 +12,7 @@ import { HomePage } from '../home/home';
 export class ResultsPage {
   results: any;
   quizTotal: number;
-  correctTotal: number;
+  correctTotal: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -29,7 +29,28 @@ export class ResultsPage {
         answer => answer.yourAnswer === answer.correctAnswer
       );
 
-      this.correctTotal = filterAnswers.length;
+     this.storage.get('option').then((val) => {
+        val=JSON.parse(val)
+       console.log(val);
+
+       let coef = 0 ;
+       let difficul = val.difficulty;
+       if(difficul == 'easy'){
+         coef = 5;
+       }else if(difficul == 'medium'){
+         coef = 10;
+       }else if(difficul == 'hard'){
+         coef = 20;
+       }
+       let falseAnswer = this.quizTotal - filterAnswers.length;
+       let score = (filterAnswers.length * coef) + (falseAnswer * (coef * -1)); 
+
+        //this.correctTotal = val.difficulty ;
+        this.correctTotal = score;
+        console.log(this.correctTotal);
+        });
+
+
     });
   }
 

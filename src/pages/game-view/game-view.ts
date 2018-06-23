@@ -16,6 +16,7 @@ export class GameViewPage {
   correct:any;
   quizIndex:number;
   totalQuizNum: number;
+  timer: any=[];
 
   constructor(
     public navCtrl: NavController, 
@@ -23,8 +24,20 @@ export class GameViewPage {
     private storage: Storage) {
   }
 
+
   shuffle(arr){
     let currentIndex = arr.length, temporaryValue, randomIndex;
+   let i: number=0;
+   /* let timeTab: Date[20];
+    for(let i=0;i<this.totalQuizNum;i++){
+      timeTab[i] = this.timer; 
+    }*/ 
+    const array = [];
+    for(let i:number = 0 ; i < this.totalQuizNum; i++){
+      array.push(Date());
+    }
+    console.log(array);
+
     while (0 !== currentIndex) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
