@@ -85,8 +85,12 @@ export class HomePage {
     this.storage.set('results', []);
     this.storage.set("pseudo",JSON.stringify(this.pseudo));
    
-   
     }
+
+  getPseudo(){
+    return this.pseudo;
+  }
+
 
   
   

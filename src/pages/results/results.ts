@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GameViewPage } from '../game-view/game-view';
 import { Storage } from '@ionic/storage';
-import { HomePage } from '../home/home';
+import { HomePage} from '../home/home';
 import { Http } from '@angular/http';
+
+
 
 @IonicPage()
 @Component({
@@ -14,7 +16,9 @@ export class ResultsPage {
   results: any;
   quizTotal: number;
   correctTotal: any;
-
+  score: any;
+  pseudo: string;
+  data:any = {};
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -49,7 +53,7 @@ export class ResultsPage {
        }
        let falseAnswer = this.quizTotal - filterAnswers.length;
        let score = (filterAnswers.length * coef) + (falseAnswer * (coef * -1)); 
-
+       this.storage.set('score', JSON.stringify(score));
         //this.correctTotal = val.difficulty ;
         this.correctTotal = score;
         console.log(this.correctTotal);
@@ -69,14 +73,20 @@ export class ResultsPage {
     this.storage.set('results', []);
   }
 
-<<<<<<< HEAD
 
   addScore(){
  
-    
+    this.storage.get('pseudo').then((val) => {
+    let pseudo=val.pseuo;
+
+
+    });
+
     let response = {
-      nickname: "test",
-      score: -20,
+      
+      
+      nickname: 'test',
+      score: 20,
       time: 44.254,
       avatar_url: "https://api.adorable.io/avatars/test"
     };
@@ -88,18 +98,16 @@ export class ResultsPage {
 
     this.http.post(link,JSON.stringify(response))
     .subscribe(data => {
-  
+      this.data.response = data["_body"];
     }, error => {
     console.log("Oooops!");
 
 
    
   });
+
+
+    }
   }
 
-}
 
-
-=======
-}
->>>>>>> 6df277f375abfcfce151d11af4844465fbecb914

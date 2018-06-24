@@ -147,14 +147,5 @@ export class GameViewPage {
   timer();
 }
 
-timerStop(){
-
-}
-
-
-
-
-
-
 }
 
