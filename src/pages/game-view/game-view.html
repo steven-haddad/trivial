@@ -14,6 +14,11 @@
         <ion-label class="category">     
           <b>difficulty: </b>{{currentQuiz.difficulty}}
         </ion-label>
+        <ion-item no-lines>
+          <ion-icon name="md-timer" item-start></ion-icon>
+          Time
+          <ion-badge item-end>{{ time }}</ion-badge>
+      </ion-item>
      
         <h2 class="question">{{currentQuiz.question}}</h2>
         

@@ -18,6 +18,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { QuizProvider } from '../providers/quiz/quiz';
 import { LeaderBoardPage } from '../pages/leader-board/leader-board';
 import { RestProvider } from '../pages/leader-board/leader-board-rest';
+import { FeedbackPageModule } from '../pages/feedback/feedback.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,8 @@ import { RestProvider } from '../pages/leader-board/leader-board-rest';
     BrowserModule,
     HttpModule,
     HttpClientModule,
+  
+    
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -52,6 +55,8 @@ import { RestProvider } from '../pages/leader-board/leader-board-rest';
     StatusBar,
     SplashScreen,
     RestProvider,
+    GameViewPage,
+    FeedbackPage,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     QuizProvider
   ]

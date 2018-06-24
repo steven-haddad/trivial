@@ -56,7 +56,7 @@ export class SettingsPage {
 
     } 
     this.storage.set('option', JSON.stringify(option));
-    this.navCtrl.push(GameViewPage);
+    this.navCtrl.push(HomePage);
   }
 
 }

@@ -1,6 +1,6 @@
 
 .toolbar-title {
-    color: color($colors, secondary);
+    color:  lightskyblue;
     text-align: center;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
-    border-bottom-color: #fdfdfd;
+    border-bottom-color: blue;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -27,17 +27,14 @@
 }
 
 .answers:hover {
-    background: lightgray;
+    background: lightblue;
 }
 
 .category {
-    color:lightgreen;
+    color:Aquamarine ;
 }
 
 .category b{
     color:lightgray;
 }
 
-img{
-     background: #fff;
-}

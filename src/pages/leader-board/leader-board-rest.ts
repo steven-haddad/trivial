@@ -14,16 +14,6 @@ export class RestProvider {
 
     }
 
-    getQuestions(difficulty, type) {
-        return new Promise(resolve => {
-            this
-                .http
-                .get('https://opentdb.com/api.php?amount=20&difficulty='+difficulty+'&type='+type+'&encode=base64')
-                .subscribe(data => {
-                    resolve(data);
-                });
-        });
-    }
 
     getLeaderBoard(){
         return new Promise(resolve => {

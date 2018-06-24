@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FeedbackPage } from '../feedback/feedback';
+import { FeedbackPage} from '../feedback/feedback';
 import { ResultsPage } from '../results/results';
 
 @IonicPage()
@@ -9,6 +9,8 @@ import { ResultsPage } from '../results/results';
   selector: 'page-game-view',
   templateUrl: 'game-view.html',
 })
+
+@Injectable()
 export class GameViewPage {
   quizzes:any;
   currentQuiz:any;
@@ -16,11 +18,20 @@ export class GameViewPage {
   correct:any;
   quizIndex:number;
   totalQuizNum: number;
+ difficulty: string;
+  public counter: number = 0;
+  public time: number = 0;
+  public id: number=0;
+  public score: number = 0;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private storage: Storage) {
+    private storage: Storage,
+   
+  ) {
+  this.difficulty = navParams.get('difficulty')
+  console.log(this.difficulty)
   }
 
   shuffle(arr){
@@ -39,6 +50,10 @@ export class GameViewPage {
   ionViewWillEnter(){
     this.storage.get('quizIndex').then((val) => {
       this.quizIndex = val;
+    
+      this.timer();
+     
+     
     });
 
     this.storage.get('quizzes').then((val) => {
@@ -50,9 +65,13 @@ export class GameViewPage {
         this.answers = this.currentQuiz.incorrect_answers;
         this.correct = this.currentQuiz.correct_answer;
         this.answers.push(this.correct);
-        this.shuffle(this.answers);   
+        this.shuffle(this.answers);
+        this.counter++;
       } else if ( this.totalQuizNum < this.quizIndex +1) {
+       
+
         this.navCtrl.setRoot(ResultsPage);
+      
       };
     });
   }
@@ -66,6 +85,7 @@ export class GameViewPage {
             correctAnswer: this.correct
           }
       results.push(quizResults);
+     
       this.storage.set('results', results)
     });    
   }
@@ -90,4 +110,38 @@ export class GameViewPage {
         });
     } 
   }
+
+
+
+  timer() {
+    var timer = () => {
+       setTimeout(() => {
+        this.storage.set('timeSave', this.time);   
+        this.storage.get('timeSave').then((val) => {
+             if(val==0){
+          this.time += 1;
+          console.log(val);
+            }
+            else{
+              this.time=val+1;
+              console.log(val);
+            }
+          });
+                   timer();
+            
+        }, 1000);
+    }
+    
+  timer();
+}
+
+timerStop(){
+
+}
+
+
+
+
+
+
 }

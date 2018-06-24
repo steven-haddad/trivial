@@ -15,7 +15,7 @@
          Statistiques
         </h2>
         <h1>
-         Vous avez {{correctTotal}} sur {{quizTotal}} réponses correctes!
+          Votre score est {{correctTotal}}
         </h1>
         
         <ion-list>
@@ -31,9 +31,11 @@
         <div class="center">
           <button ion-button (click)="restart()">Nouvelle partie</button>
         </div>  
+          
+
         <div class="center">
-          <button ion-button (click)="restart()">Enregistrer votre score</button>
-        </div>  
+          <button ion-button (click)="addScore()">Envoyer les données sur le ledear board</button>
+        </div> 
       </ion-col>
     </ion-row>
   </ion-grid>
