@@ -16,7 +16,6 @@ export class QuizProvider {
   getQuiz(category, difficulty, quizNum, type, encodage){
     return this.http.get(this.url + quizNum + '&category=' + category + '&difficulty=' + difficulty + '&type=' + type + '&encodage=' + encodage )
       .map(res => res.json());
-
       
   }
 }

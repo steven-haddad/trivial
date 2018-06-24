@@ -18,11 +18,13 @@ export class GameViewPage {
   correct:any;
   quizIndex:number;
   totalQuizNum: number;
+
  difficulty: string;
   public counter: number = 0;
   public time: number = 0;
   public id: number=0;
   public score: number = 0;
+
 
   constructor(
     public navCtrl: NavController, 
@@ -34,8 +36,20 @@ export class GameViewPage {
   console.log(this.difficulty)
   }
 
+
   shuffle(arr){
     let currentIndex = arr.length, temporaryValue, randomIndex;
+   let i: number=0;
+   /* let timeTab: Date[20];
+    for(let i=0;i<this.totalQuizNum;i++){
+      timeTab[i] = this.timer; 
+    }*/ 
+    const array = [];
+    for(let i:number = 0 ; i < this.totalQuizNum; i++){
+      array.push(Date());
+    }
+    console.log(array);
+
     while (0 !== currentIndex) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
@@ -111,8 +125,6 @@ export class GameViewPage {
     } 
   }
 
-
-
   timer() {
     var timer = () => {
        setTimeout(() => {
@@ -145,3 +157,4 @@ timerStop(){
 
 
 }
+

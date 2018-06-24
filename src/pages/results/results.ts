@@ -13,7 +13,7 @@ import { Http } from '@angular/http';
 export class ResultsPage {
   results: any;
   quizTotal: number;
-  correctTotal: number;
+  correctTotal: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -69,6 +69,7 @@ export class ResultsPage {
     this.storage.set('results', []);
   }
 
+<<<<<<< HEAD
 
   addScore(){
  
@@ -99,3 +100,6 @@ export class ResultsPage {
 }
 
 
+=======
+}
+>>>>>>> 6df277f375abfcfce151d11af4844465fbecb914
