@@ -61,11 +61,11 @@ export class HomePage {
     this.storage.get('pseudo').then((val) => {
     if(val!==null){
       this.pseudo = JSON.parse(val);
+      console.log(JSON.parse(val));
     }
     }); 
     
   };
-
 
 
   getValue(){

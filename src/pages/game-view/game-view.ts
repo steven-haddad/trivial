@@ -132,11 +132,11 @@ export class GameViewPage {
         this.storage.get('timeSave').then((val) => {
              if(val==0){
           this.time += 1;
-          console.log(val);
+
             }
             else{
               this.time=val+1;
-              console.log(val);
+           
             }
           });
                    timer();

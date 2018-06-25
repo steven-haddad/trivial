@@ -18,13 +18,16 @@ export class ResultsPage {
   correctTotal: any;
   score: any;
   pseudo: string;
+  time: number;
   data:any = {};
+  response: any;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
     public http: Http) {
       this.http = http;
+
 
     
   }
@@ -56,7 +59,22 @@ export class ResultsPage {
        this.storage.set('score', JSON.stringify(score));
         //this.correctTotal = val.difficulty ;
         this.correctTotal = score;
-        console.log(this.correctTotal);
+        this.storage.get('pseudo').then((val) => {
+          this.storage.get('timeSave').then((data) => {
+          if(val!==null){
+            this.pseudo = JSON.parse(val);
+            this.time = JSON.parse(data);
+            this.response = {
+              nickname: this.pseudo,
+              avatar_url: "https://api.adorable.io/avatars/"+this.pseudo,
+              time: this.time,
+              score: this.correctTotal
+        
+              }
+          }
+        });
+          }); 
+
         });
 
 
@@ -76,15 +94,25 @@ export class ResultsPage {
 
   addScore(){
  
-    this.storage.get('pseudo').then((val) => {
+
+    var link = 'https://leaderboard.lp1.eu/api/score';
+    console.log(link);
+    console.log(this.response);
+    this.http.post(link,this.response)
+    .subscribe(response => {
+      console.log('true');  
+     // this.data.response = data["_body"];
+    }, error => {
+    console.log("Oooops!");
+  
+  })
+
+ 
+ /*   this.storage.get('pseudo').then((val) => {
     let pseudo=val.pseuo;
-
-
     });
 
-    let response = {
-      
-      
+    let response = {  
       nickname: 'test',
       score: 20,
       time: 44.254,
@@ -92,19 +120,19 @@ export class ResultsPage {
     };
    
     
-    var link = 'https://leaderboard.lp1.eu/api/score';
-   
-    console.log(JSON.stringify(response));
-
-    this.http.post(link,JSON.stringify(response))
+    var link = 'https://leaderboard.lp1.eu/';
+    console.log(link);
+    console.log(response);
+    this.http.post('api/score',response, link)
     .subscribe(data => {
+      console.log('true');  
       this.data.response = data["_body"];
     }, error => {
     console.log("Oooops!");
+  
+  }); */
 
 
-   
-  });
 
 
     }
